@@ -9,6 +9,7 @@ export default function App() {
   const [pontosB, setPontosB] = useState(0);
   const [posseTimeA, setPosseTimeA] = useState(true);
   const [historico, setHistorico] = useState([]);
+  const [historicoPontos, setHistoricoPontos] = useState([]);
 
   function registrarPontos(pontos) {
     const timeAtual = posseTimeA ? "Time A" : "Time B";
@@ -24,6 +25,11 @@ export default function App() {
       `${timeAtual} marcou +${pontos} ponto(s)`
     ]);
 
+    setHistoricoPontos([
+      ...historicoPontos,
+      pontos
+    ]);
+
     setPosseTimeA(!posseTimeA);
   }
 
@@ -36,6 +42,26 @@ export default function App() {
     setPontosB(0);
     setPosseTimeA(true);
     setHistorico([]);
+    setHistoricoPontos([]);
+  }
+
+  function desfazerJogada() {
+    if (historicoPontos.length === 0) {
+      return;
+    }
+
+    const ultimoPonto = historicoPontos[historicoPontos.length - 1];
+
+    if (posseTimeA) {
+      setPontosB(pontosB - ultimoPonto);
+    } else {
+      setPontosA(pontosA - ultimoPonto);
+    }
+
+    setHistorico(historico.slice(0, -1));
+    setHistoricoPontos(historicoPontos.slice(0, -1));
+
+    setPosseTimeA(!posseTimeA);
   }
 
   return (
@@ -55,6 +81,7 @@ export default function App() {
 
       <ControlesGerais
         onReiniciar={reiniciarPartida}
+        onDesfazerJogada={desfazerJogada}
       />
 
       <Historico historico={historico} />
