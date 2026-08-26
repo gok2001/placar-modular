@@ -2,6 +2,7 @@ import { useState } from "react";
 import Placar from "./components/Placar";
 import AcoesJogo from "./components/AcoesJogo";
 import Historico from "./components/Historico";
+import ControlesGerais from "./components/ControlesGerais";
 
 export default function App() {
   const [pontosA, setPontosA] = useState(0);
@@ -30,6 +31,13 @@ export default function App() {
     setPosseTimeA(!posseTimeA);
   }
 
+  function reiniciarPartida() {
+    setPontosA(0);
+    setPontosB(0);
+    setPosseTimeA(true);
+    setHistorico([]);
+  }
+
   return (
     <div style={{ textAlign: "center", fontFamily: "sans-serif", maxWidth: "600px", margin: "0 auto" }}>
       <h1>Placar do Jogo</h1>
@@ -43,6 +51,10 @@ export default function App() {
       <AcoesJogo
         onPontuar={registrarPontos}
         onPassarBola={passarBola}
+      />
+
+      <ControlesGerais
+        onReiniciar={reiniciarPartida}
       />
 
       <Historico historico={historico} />
