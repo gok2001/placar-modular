@@ -1,38 +1,289 @@
-.App {
-  text-align: center;
+/* =========================
+   CONTAINER PRINCIPAL
+   ========================= */
+
+.app {
+    min-height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.app h1 {
+    margin-bottom: 35px;
+    font-size: 42px;
+    color: #1e293b;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* =========================
+   VENCEDOR
+   ========================= */
+
+.vencedor {
+    margin: 0 auto 25px;
+    padding: 15px 20px;
+    max-width: 500px;
+
+    background: #dcfce7;
+    color: #166534;
+
+    border: 2px solid #86efac;
+    border-radius: 12px;
+
+    font-size: 22px;
+    font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/* =========================
+   PLACAR
+   ========================= */
+
+.placar {
+    margin-bottom: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.times {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.time {
+    width: 220px;
+    padding: 25px 20px;
+
+    background: white;
+
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+
+    transition: 0.2s ease;
+}
+
+.time span {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    color: #475569;
+}
+
+.time strong {
+    display: block;
+
+    font-size: 64px;
+    line-height: 1;
+
+    color: #0f172a;
+}
+
+
+/* TIME COM A POSSE */
+
+.time-ativo {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15),
+        0 10px 25px rgba(37, 99, 235, 0.15);
+
+    transform: translateY(-4px);
+}
+
+.time-ativo span {
+    color: #2563eb;
+}
+
+
+/* =========================
+   ATAQUE ATUAL
+   ========================= */
+
+.ataque {
+    margin-top: 25px;
+
+    font-size: 18px;
+    color: #64748b;
+}
+
+.ataque strong {
+    color: #2563eb;
+}
+
+
+/* =========================
+   AÇÕES DO JOGO
+   ========================= */
+
+.acoes-jogo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin: 25px 0;
+}
+
+
+/* =========================
+   BOTÕES
+   ========================= */
+
+.btn {
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 18px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+
+/* BOTÕES DE PONTUAÇÃO */
+
+.btn-ponto {
+    background: #2563eb;
+    color: white;
+
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.btn-ponto:hover {
+    background: #1d4ed8;
+}
+
+
+/* TROCAR POSSE */
+
+.btn-posse {
+    background: #f59e0b;
+    color: white;
+
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25);
+}
+
+.btn-posse:hover {
+    background: #d97706;
+}
+
+
+/* =========================
+   CONTROLES
+   ========================= */
+
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    margin: 25px 0 35px;
+}
+
+
+/* REINICIAR */
+
+.btn-reiniciar {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-reiniciar:hover {
+    background: #b91c1c;
+}
+
+
+/* DESFAZER */
+
+.btn-desfazer {
+    background: #64748b;
+    color: white;
+}
+
+.btn-desfazer:hover {
+    background: #475569;
+}
+
+
+/* =========================
+   HISTÓRICO
+   ========================= */
+
+.historico {
+    max-width: 600px;
+    margin: 0 auto;
+
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+
+    text-align: left;
+}
+
+.historico h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-size: 22px;
+    color: #1e293b;
+}
+
+.historico-vazio {
+    margin: 0;
+
+    color: #64748b;
+    text-align: center;
+}
+
+
+/* LISTA */
+
+.lista-historico {
+    margin: 0;
+    padding-left: 25px;
+
+    color: #334155;
+}
+
+.lista-historico li {
+    padding: 8px 0;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.lista-historico li:last-child {
+    border-bottom: none;
 }

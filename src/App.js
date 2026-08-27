@@ -3,6 +3,7 @@ import Placar from "./components/Placar";
 import AcoesJogo from "./components/AcoesJogo";
 import Historico from "./components/Historico";
 import ControlesGerais from "./components/ControlesGerais";
+import "./App.css"
 
 export default function App() {
   const [pontosA, setPontosA] = useState(0);
@@ -77,30 +78,32 @@ export default function App() {
   }
 
   return (
-    <div style={{ textAlign: "center", fontFamily: "sans-serif", maxWidth: "600px", margin: "0 auto" }}>
-      <h1>Placar do Jogo</h1>
+    <div className="app">
+        <h1>Placar do Jogo</h1>
 
-      {vencedor && (
-        <div>{vencedor} venceu a partida!</div>
-      )}
+        {vencedor && (
+            <div className="vencedor">
+                {vencedor} venceu a partida!
+            </div>
+        )}
 
-      <Placar
-        pontosA={pontosA}
-        pontosB={pontosB}
-        posseTimeA={posseTimeA}
-      />
+        <Placar
+            pontosA={pontosA}
+            pontosB={pontosB}
+            posseTimeA={posseTimeA}
+        />
 
-      <AcoesJogo
-        onPontuar={registrarPontos}
-        onPassarBola={passarBola}
-      />
+        <AcoesJogo
+            onPontuar={registrarPontos}
+            onPassarBola={passarBola}
+        />
 
-      <ControlesGerais
-        onReiniciar={reiniciarPartida}
-        onDesfazerJogada={desfazerJogada}
-      />
+        <ControlesGerais
+            onReiniciar={reiniciarPartida}
+            onDesfazerJogada={desfazerJogada}
+        />
 
-      <Historico historico={historico} />
+        <Historico historico={historico} />
     </div>
   );
 }
