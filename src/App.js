@@ -12,6 +12,10 @@ export default function App() {
   const [historicoPontos, setHistoricoPontos] = useState([]);
 
   function registrarPontos(pontos) {
+    if (vencedor) {
+      return;
+    }
+
     const timeAtual = posseTimeA ? "Time A" : "Time B";
 
     if (posseTimeA) {
@@ -64,9 +68,21 @@ export default function App() {
     setPosseTimeA(!posseTimeA);
   }
 
+  let vencedor = null;
+
+  if (pontosA >= 21) {
+    vencedor = "Time A";
+  } else if (pontosB >= 21) {
+    vencedor = "Time B";
+  }
+
   return (
     <div style={{ textAlign: "center", fontFamily: "sans-serif", maxWidth: "600px", margin: "0 auto" }}>
       <h1>Placar do Jogo</h1>
+
+      {vencedor && (
+        <div>{vencedor} venceu a partida!</div>
+      )}
 
       <Placar
         pontosA={pontosA}
